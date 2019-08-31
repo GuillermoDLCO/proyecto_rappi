@@ -11,11 +11,16 @@ class MyApp extends StatelessWidget {
       statusBarBrightness: Brightness.dark,
     ));
     return MaterialApp(
+      theme: ThemeData(
+        accentColor: Colors.white
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: SafeArea(
         child: Scaffold(
-          drawer: Drawer(),
+          drawer: Drawer(
+            elevation: 2.0,
+          ),
           bottomNavigationBar: bottombar(),
           appBar: AppBar(
             title: Text(
@@ -26,30 +31,31 @@ class MyApp extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Container(
+              margin: EdgeInsets.all(20.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Table(children: [
-                    TableRow(children: [
-                      _categoria(),
-                      _categoria(),
-                    ]),
-                    TableRow(children: [
-                      _categoria(),
-                      _categoria(),
-                    ]),
-                    TableRow(children: [
-                      _categoria(),
-                      _categoria(),
-                    ]),
-                    TableRow(children: [
-                      _categoria(),
-                      _categoria(),
-                    ]),
-                    TableRow(children: [
-                      _categoria(),
-                      _categoria(),
-                    ]),
-                  ])
+                  SizedBox(height: 5.0,),
+                  Text('¿Qué se te antoja?', style: TextStyle(fontSize: 20.0, ),),
+                  Container(
+                    margin: EdgeInsets.only(top: 5.0),
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(20.0)
+                    ),
+                  ),
+                  Text('¿Qué se te antoja?', style: TextStyle(fontSize: 20.0, ),),
+                  Container(
+                    margin: EdgeInsets.only(top: 5.0),
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(20.0)
+                    ),
+                  ),
+                  SizedBox(height: 20.0,),
+                  _listado(),
                 ],
               ),
             ),
@@ -59,10 +65,36 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  Table _listado() {
+    return Table(children: [
+                  TableRow(children: [
+                    _categoria(),
+                    _categoria(),
+                  ]),
+                  TableRow(children: [
+                    _categoria(),
+                    _categoria(),
+                  ]),
+                  TableRow(children: [
+                    _categoria(),
+                    _categoria(),
+                  ]),
+                  TableRow(children: [
+                    _categoria(),
+                    _categoria(),
+                  ]),
+                  TableRow(children: [
+                    _categoria(),
+                    _categoria(),
+                  ]),
+                ]);
+  }
+
   BottomAppBar bottombar() {
     return BottomAppBar(
           shape: CircularNotchedRectangle(),
           elevation: 1.0,
+          color: Colors.white,
           child: new Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,6 +105,7 @@ class MyApp extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.add_to_queue),
+                color: Colors.black,
                 onPressed: () {},
               ),
               IconButton(
@@ -86,6 +119,7 @@ class MyApp extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.offline_bolt),
                 onPressed: () {},
+                color: Colors.orange,
               ),
             ],
           ),
@@ -98,7 +132,11 @@ class MyApp extends StatelessWidget {
       child: Container(
         height: 150.0,
         width: 40.0,
-        color: Colors.orange,
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          borderRadius: BorderRadius.circular(20.0)
+        ),
+
       ),
     );
   }
